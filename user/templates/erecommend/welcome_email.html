@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Thank you for signing up!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+</head>
+
+<body class="container d-flex justify-content-center">
+    <section class="bg-warning p-5 m-5">
+        <h1 class="text-primary text-center">Welcome to Yemba NER {{ first_name }}</h1>
+        <p class="text-center text-info">Your Registration Was Completed.</p>
+
+        <p class="display-6 text-center text-white">
+            We are thrilled to have you join our community of shoppers who are passionate about finding the best
+            products at the best prices. Your registration has been successfully validated, and your journey to a
+            seamless shopping experience starts here.
+        </p>
+        <hr class="shadow-sm mt-5 mb-5">
+        <h4 class="text-info text-justify">Your informations</h4>
+        <table class="table">
+            <thead>
+                <th>Credential</th>
+                <th>Value</th>
+            </thead>
+            <tr>
+                <th>Email</th>
+                <td>{{ email }}</td>
+            </tr>
+            <tr>
+                <th>Preferences</th>
+                <td>{{ preferences }}</td>
+            </tr>
+            <tr>
+                <th>Phone Number</th>
+                <td>{{ phone_number }}</td>
+            </tr>
+        </table>
+    </section>
+</body>
+
+</html>
