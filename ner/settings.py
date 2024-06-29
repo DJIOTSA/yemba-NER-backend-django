@@ -100,6 +100,9 @@ WSGI_APPLICATION = "ner.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# render PostgreSQL daatabase
+
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -159,8 +162,7 @@ EMAIL_PORT = os.environ.get('AUTHEMAIL_EMAIL_PORT') or 587
 EMAIL_HOST_USER ='yembaner@gmail.com'
 EMAIL_HOST_PASSWORD = 'sqkx aczl jyuj avwh'
 """
-EMAIL_HOST_USER = os.environ.get(
-    'AUTHEMAIL_EMAIL_HOST_USER') or 'yembaner@gmail.com'
+EMAIL_HOST_USER = os.environ.get('AUTHEMAIL_EMAIL_HOST_USER') or 'yembaner@gmail.com'
 EMAIL_HOST_PASSWORD = os.environ.get(
     'AUTHEMAIL_EMAIL_HOST_PASSWORD') or 'sqkx aczl jyuj avwh'
 EMAIL_USE_TLS = True
@@ -168,3 +170,6 @@ EMAIL_USE_SSL = False
 # configure media file; update file trough the application
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = 'media/'
+
+
+
