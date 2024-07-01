@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
+from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated, IsAdminUser
 from .models import History
 from .serializers import HistoryListSerializer, HistoryCreateSerializer
@@ -9,7 +10,7 @@ from .serializers import HistoryListSerializer, HistoryCreateSerializer
 class HistoryDetailView(generics.RetrieveAPIView):
     queryset = History.objects.all()
     serializer_class = HistoryListSerializer
-    authentication_classes = [TokenAuthentication, SessionAuthentication]
+    authentication_classes = [TokenAuthentication, SessionAuthentication, JWTAuthentication]
     permission_classes = [IsAuthenticated]
     lookup_field = 'pk'
 
@@ -22,7 +23,7 @@ class HistoryDetailView(generics.RetrieveAPIView):
 class HistoryListView(generics.ListAPIView):
     queryset = History.objects.all()
     serializer_class = HistoryListSerializer
-    authentication_classes = [TokenAuthentication, SessionAuthentication]
+    authentication_classes = [TokenAuthentication, SessionAuthentication, JWTAuthentication]
     permission_classes = [IsAuthenticated]
     lookup_field = 'pk'
 
@@ -35,7 +36,7 @@ class HistoryListView(generics.ListAPIView):
 class HistoryCreateView(generics.CreateAPIView):
     queryset = History.objects.all()
     serializer_class = HistoryCreateSerializer
-    authentication_classes = [TokenAuthentication, SessionAuthentication]
+    authentication_classes = [TokenAuthentication, SessionAuthentication, JWTAuthentication]
     permission_classes = [IsAuthenticated]
     lookup_field = 'pk'
 

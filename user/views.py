@@ -23,6 +23,7 @@ from django.conf import settings
 from django.utils.translation import gettext as _
 
 from rest_framework import  authentication, permissions, generics
+from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 
@@ -141,7 +142,7 @@ class SignupVerify(APIView, TemplateView):
 
 class UserUpdate(generics.RetrieveUpdateAPIView):
     """ User Update first_name, last_name and country """
-    authentication_classes = [authentication.TokenAuthentication, authentication.SessionAuthentication]
+    authentication_classes = [authentication.TokenAuthentication, authentication.SessionAuthentication, JWTAuthentication]
     permission_classes = [permissions.IsAuthenticated]
     queryset = get_user_model().objects.all()
     serializer_class  = UserUpdateSerializer
@@ -223,7 +224,7 @@ class Login(APIView):
 
 class Logout( APIView):
     queryset = User.objects.all()
-    authentication_classes = ( authentication.TokenAuthentication, authentication.SessionAuthentication )
+    authentication_classes = [authentication.TokenAuthentication, authentication.SessionAuthentication, JWTAuthentication]
     permission_classes = (AllowAny, )
 
     def get(self, request, format=None):
@@ -245,7 +246,7 @@ class PasswordReset( APIView,):
     the new one sent by the user
     """
     queryset = User.objects.all()
-    authentication_classes = ( authentication.TokenAuthentication, authentication.SessionAuthentication)
+    authentication_classes = [authentication.TokenAuthentication, authentication.SessionAuthentication, JWTAuthentication]
     permission_classes = (IsAuthenticated, )
     serializer_class = PasswordResetSerializer
 
@@ -367,7 +368,7 @@ class PasswordResetNotVerifiedFrontEnd(TemplateView):
 
 class UserMe(generics.ListAPIView):
     queryset = User.objects.all()
-    authentication_classes =( authentication.TokenAuthentication, authentication.SessionAuthentication)
+    authentication_classes = [authentication.TokenAuthentication, authentication.SessionAuthentication, JWTAuthentication]
     permission_classes = (permissions.IsAdminUser, IsAuthenticated,)
     serializer_class = UserSerializer
     lookup_field = 'pk'
@@ -375,7 +376,7 @@ class UserMe(generics.ListAPIView):
 
 class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
-    authentication_classes =( authentication.TokenAuthentication, authentication.SessionAuthentication)
+    authentication_classes = [authentication.TokenAuthentication, authentication.SessionAuthentication, JWTAuthentication]
     permission_classes = (IsAuthenticated,)
     serializer_class = UserSerializer
     lookup_field = 'pk'
