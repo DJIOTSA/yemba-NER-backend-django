@@ -9,7 +9,6 @@ class HistoryListSerializer(serializers.ModelSerializer):
 
 
 class HistoryCreateSerializer(serializers.ModelSerializer):
-    url = serializers.HyperlinkedIdentityField(view_name="history-detail", lookup_field='pk')
     class Meta:
         model = History
         fields = ['input', 'output', 'user', 'accuracy']

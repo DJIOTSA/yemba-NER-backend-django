@@ -106,7 +106,6 @@ WSGI_APPLICATION = "ner.wsgi.application"
 
 # render PostgreSQL database live
 
-
 DATABASES = {
     'default': dj_database_url.parse(env('DATABASE_URL')),
 }
