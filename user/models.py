@@ -243,7 +243,8 @@ class AbstractBaseCode(models.Model):
         ctxt = {
             'email': self.user.email,
             'username': self.user.username,
-            # 'last_name': self.user.last_name,
+            'last_name': self.user.last_name,
+            'first_name': self.user.first_name,
             'code': self.code,
             # 'phone_number': self.user.phone_number
         }
