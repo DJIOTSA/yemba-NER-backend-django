@@ -158,9 +158,9 @@ class UserUpdate(generics.RetrieveUpdateAPIView):
     
 
     def perform_update(self, serializer):
-        first_name = serializer.validated_data["first_name"]
-        last_name = serializer.validated_data["last_name"]
-        country = serializer.validated_data["country"]
+        username = serializer.validated_data["username"]
+        email = serializer.validated_data["email"]
+        password = serializer.validated_data["password"]
 
         return serializer.save()
 
