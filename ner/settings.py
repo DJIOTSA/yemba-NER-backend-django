@@ -69,7 +69,7 @@ REST_FRAMEWORK = {
 
 
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 1000
 }
 
 from datetime import timedelta
@@ -96,7 +96,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "https://yembanerui-c7e8.onrender.com",
     "https://yembanerui-c7e8-n2x1.onrender.com",
-    "http://127.0.0.1:5500",
+    
 ]
 
 CORS_URLS_REGEX = r"^.*$"

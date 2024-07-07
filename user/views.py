@@ -40,7 +40,7 @@ from user.serializers import (
     PasswordResetSerializer,
     PasswordResetVerifiedSerializer,
     UserSerializer,
-    UserUpdateSerializer,
+    UserProfileSerializer,
 
 )
 from django.views.generic import TemplateView
@@ -140,30 +140,19 @@ class SignupVerify(APIView, TemplateView):
             return HttpResponseRedirect(reverse('signup-not-verified'), content)
 
 
-class UserUpdate(generics.RetrieveUpdateAPIView):
+class UserProfile(generics.ListAPIView):
     """ User Update first_name, last_name and country """
     authentication_classes = [authentication.TokenAuthentication, authentication.SessionAuthentication, JWTAuthentication]
     permission_classes = [permissions.IsAuthenticated]
     queryset = get_user_model().objects.all()
-    serializer_class  = UserUpdateSerializer
+    serializer_class  = UserProfileSerializer
     lookup_key = "pk"
 
-
-    def get(self, request, *args, **kwargs):
-        obj = self.get_object()
-
-        if obj != request.user:
-            raise PermissionDenied
-        return self.retrieve(request, *args, **kwargs)
+    def get_queryset(self):
+        user = self.request.user
+        queryset = self.queryset
+        return queryset.filter(email=user.email)
     
-
-    def perform_update(self, serializer):
-        username = serializer.validated_data["username"]
-        email = serializer.validated_data["email"]
-        password = serializer.validated_data["password"]
-
-        return serializer.save()
-
 
 class SignupVerifiedFrontEnd(TemplateView):
     template_name = 'erecommend/signup_verified.html'
