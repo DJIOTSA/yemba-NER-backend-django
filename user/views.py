@@ -245,11 +245,11 @@ class PasswordReset( APIView,):
         serializer = self.serializer_class(data=request.data)
 
         if serializer.is_valid():
-            email = self.request.user.email
+            email = serializer.data['email']
             new_password = serializer.data['new_password']
 
             try:
-                user = get_user_model().objects.get(email=email)
+                user = get_user_model().objects.get(email=email.lower())
 
                 # Delete all unused password reset codes
                 PasswordResetCode.objects.filter(user=user).delete()
