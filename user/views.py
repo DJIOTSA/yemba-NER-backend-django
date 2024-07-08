@@ -235,8 +235,8 @@ class PasswordReset( APIView,):
     the new one sent by the user
     """
     queryset = User.objects.all()
-    authentication_classes = [authentication.TokenAuthentication, authentication.SessionAuthentication, JWTAuthentication]
-    permission_classes = (IsAuthenticated, )
+    authentication_classes = []
+    permission_classes = (AllowAny, )
     serializer_class = PasswordResetSerializer
 
     def post(self, request, format=None):
