@@ -95,7 +95,6 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "https://yembanerui.onrender.com",
-    "https://yembanerui-c7e8.onrender.com",
     "https://yembanerui-c7e8-n2x1.onrender.com",
     
 ]
