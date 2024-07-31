@@ -97,7 +97,6 @@ CORS_ALLOWED_ORIGINS = [
     "https://yembanerui.onrender.com",
     "https://yembanerui-c7e8-n2x1.onrender.com",
     "https://mhulo-yembaner.hf.space",
-    
 ]
 
 CORS_URLS_REGEX = r"^.*$"
